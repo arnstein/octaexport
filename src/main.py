@@ -3,7 +3,7 @@ import os
 from PyQt6.QtWidgets import QMainWindow, QApplication, QTreeView, QWidget, QVBoxLayout
 from PyQt6.QtGui import QIcon, QFileSystemModel
 from PyQt6.QtCore import QDir, QStringListModel
-from MainWindow import Ui_MainWindow
+from OctaExport import Ui_OctaExport
 # TODO:
 # Show items to convert in bottom list
 # Set ffmpeg command in Options
@@ -11,7 +11,7 @@ from MainWindow import Ui_MainWindow
 # Convert
 # Make sure it works on Windows / convert
 
-class MainWindow(QMainWindow, Ui_MainWindow):
+class MainWindow(QMainWindow, Ui_OctaExport):
     def __init__(self, *args, obj=None, **kwargs):
         super(MainWindow, self).__init__(*args, **kwargs)
         self.setupUi(self)

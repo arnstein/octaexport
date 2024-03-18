@@ -9,11 +9,11 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(864, 616)
-        self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
+class Ui_OctaExport(object):
+    def setupUi(self, OctaExport):
+        OctaExport.setObjectName("OctaExport")
+        OctaExport.resize(864, 616)
+        self.centralwidget = QtWidgets.QWidget(parent=OctaExport)
         self.centralwidget.setObjectName("centralwidget")
         self.treeView = QtWidgets.QTreeView(parent=self.centralwidget)
         self.treeView.setGeometry(QtCore.QRect(0, 0, 131, 271))
@@ -36,34 +36,34 @@ class Ui_MainWindow(object):
         self.pushButton_3 = QtWidgets.QPushButton(parent=self.centralwidget)
         self.pushButton_3.setGeometry(QtCore.QRect(630, 530, 80, 22))
         self.pushButton_3.setObjectName("pushButton_3")
-        MainWindow.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(parent=MainWindow)
+        OctaExport.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar(parent=OctaExport)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 864, 19))
         self.menubar.setObjectName("menubar")
         self.menuMenu = QtWidgets.QMenu(parent=self.menubar)
         self.menuMenu.setObjectName("menuMenu")
-        MainWindow.setMenuBar(self.menubar)
-        self.statusbar = QtWidgets.QStatusBar(parent=MainWindow)
+        OctaExport.setMenuBar(self.menubar)
+        self.statusbar = QtWidgets.QStatusBar(parent=OctaExport)
         self.statusbar.setObjectName("statusbar")
-        MainWindow.setStatusBar(self.statusbar)
-        self.actionOptions = QtGui.QAction(parent=MainWindow)
+        OctaExport.setStatusBar(self.statusbar)
+        self.actionOptions = QtGui.QAction(parent=OctaExport)
         self.actionOptions.setObjectName("actionOptions")
-        self.actionExit = QtGui.QAction(parent=MainWindow)
+        self.actionExit = QtGui.QAction(parent=OctaExport)
         self.actionExit.setObjectName("actionExit")
         self.menuMenu.addSeparator()
         self.menuMenu.addAction(self.actionOptions)
         self.menuMenu.addAction(self.actionExit)
         self.menubar.addAction(self.menuMenu.menuAction())
 
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.retranslateUi(OctaExport)
+        QtCore.QMetaObject.connectSlotsByName(OctaExport)
 
-    def retranslateUi(self, MainWindow):
+    def retranslateUi(self, OctaExport):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.pushButton.setText(_translate("MainWindow", "Convert"))
-        self.pushButton_2.setText(_translate("MainWindow", "Add"))
-        self.pushButton_3.setText(_translate("MainWindow", "Remove"))
-        self.menuMenu.setTitle(_translate("MainWindow", "Menu"))
-        self.actionOptions.setText(_translate("MainWindow", "Options"))
-        self.actionExit.setText(_translate("MainWindow", "Exit"))
+        OctaExport.setWindowTitle(_translate("OctaExport", "OctaExport"))
+        self.pushButton.setText(_translate("OctaExport", "Convert"))
+        self.pushButton_2.setText(_translate("OctaExport", "Add"))
+        self.pushButton_3.setText(_translate("OctaExport", "Remove"))
+        self.menuMenu.setTitle(_translate("OctaExport", "Menu"))
+        self.actionOptions.setText(_translate("OctaExport", "Options"))
+        self.actionExit.setText(_translate("OctaExport", "Exit"))
