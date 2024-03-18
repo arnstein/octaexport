@@ -13,8 +13,21 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.destinationModel = QFileSystemModel()
         self.destinationModel.setRootPath(QDir.rootPath())
 
+        path = QDir.rootPath()
+
+        self.fileModel = QFileSystemModel()
+
         self.treeView.setModel(self.directoryModel)
         self.treeView_2.setModel(self.destinationModel)
+        self.treeView.setRootIndex(self.directoryModel.index(path))
+
+        self.treeView.clicked.connect(self.on_clicked)
+
+        self.listView_2.setModel(self.fileModel)
+
+    def on_clicked(self, index):
+        path = self.directoryModel.fileInfo(index).absoluteFilePath()
+        self.listView_2.setRootIndex(self.fileModel.setRootPath(path))
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
