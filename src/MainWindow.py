@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file '../octaexport.ui'
+# Form implementation generated from reading ui file './octaexport.ui'
 #
 # Created by: PyQt6 UI code generator 6.4.2
 #
@@ -12,7 +12,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(800, 600)
+        MainWindow.resize(864, 616)
         self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.treeView = QtWidgets.QTreeView(parent=self.centralwidget)
@@ -22,20 +22,23 @@ class Ui_MainWindow(object):
         self.treeView_2.setGeometry(QtCore.QRect(0, 270, 131, 281))
         self.treeView_2.setObjectName("treeView_2")
         self.listView = QtWidgets.QListView(parent=self.centralwidget)
-        self.listView.setGeometry(QtCore.QRect(130, 270, 661, 261))
+        self.listView.setGeometry(QtCore.QRect(130, 0, 661, 271))
         self.listView.setObjectName("listView")
         self.pushButton = QtWidgets.QPushButton(parent=self.centralwidget)
         self.pushButton.setGeometry(QtCore.QRect(710, 530, 80, 22))
         self.pushButton.setObjectName("pushButton")
         self.listView_2 = QtWidgets.QListView(parent=self.centralwidget)
-        self.listView_2.setGeometry(QtCore.QRect(130, 0, 661, 241))
+        self.listView_2.setGeometry(QtCore.QRect(130, 290, 661, 241))
         self.listView_2.setObjectName("listView_2")
         self.pushButton_2 = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.pushButton_2.setGeometry(QtCore.QRect(710, 240, 80, 22))
+        self.pushButton_2.setGeometry(QtCore.QRect(710, 270, 80, 22))
         self.pushButton_2.setObjectName("pushButton_2")
+        self.pushButton_3 = QtWidgets.QPushButton(parent=self.centralwidget)
+        self.pushButton_3.setGeometry(QtCore.QRect(630, 530, 80, 22))
+        self.pushButton_3.setObjectName("pushButton_3")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(parent=MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 19))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 864, 19))
         self.menubar.setObjectName("menubar")
         self.menuMenu = QtWidgets.QMenu(parent=self.menubar)
         self.menuMenu.setObjectName("menuMenu")
@@ -60,6 +63,7 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.pushButton.setText(_translate("MainWindow", "Convert"))
         self.pushButton_2.setText(_translate("MainWindow", "Add"))
+        self.pushButton_3.setText(_translate("MainWindow", "Remove"))
         self.menuMenu.setTitle(_translate("MainWindow", "Menu"))
         self.actionOptions.setText(_translate("MainWindow", "Options"))
         self.actionExit.setText(_translate("MainWindow", "Exit"))
