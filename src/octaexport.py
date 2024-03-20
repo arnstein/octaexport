@@ -5,13 +5,13 @@ from pathlib import Path
 from PyQt6.QtWidgets import QMainWindow, QApplication, QTreeView, QWidget, QVBoxLayout
 from PyQt6.QtGui import QIcon, QFileSystemModel, QStandardItemModel, QStandardItem
 from PyQt6.QtCore import QDir, QStringListModel
-from OctaExport import Ui_OctaExport
+from OctaExportUI import Ui_OctaExportUi
 # TODO:
 # Fix removing items from bottom list
 # Set ffmpeg command in Options
 # Make sure it works on Windows / convert
 
-class MainWindow(QMainWindow, Ui_OctaExport):
+class MainWindow(QMainWindow, Ui_OctaExportUi):
     def __init__(self, *args, obj=None, **kwargs):
         super(MainWindow, self).__init__(*args, **kwargs)
         self.setupUi(self)
