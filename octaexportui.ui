@@ -108,10 +108,18 @@
      <string>Menu</string>
     </property>
     <addaction name="separator"/>
-    <addaction name="actionOptions"/>
+    <addaction name="separator"/>
     <addaction name="actionExit"/>
    </widget>
+   <widget class="QMenu" name="menuMode">
+    <property name="title">
+     <string>Mode</string>
+    </property>
+    <addaction name="actionFLAC_to_MP3_2"/>
+    <addaction name="action44_1kHz_WAV"/>
+   </widget>
    <addaction name="menuMenu"/>
+   <addaction name="menuMode"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionOptions">
@@ -122,6 +130,26 @@
   <action name="actionExit">
    <property name="text">
     <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionFLAC_to_MP3">
+   <property name="text">
+    <string>FLAC to MP3</string>
+   </property>
+  </action>
+  <action name="action44_1khz_WAV">
+   <property name="text">
+    <string>44.1khz WAV</string>
+   </property>
+  </action>
+  <action name="actionFLAC_to_MP3_2">
+   <property name="text">
+    <string>FLAC to MP3</string>
+   </property>
+  </action>
+  <action name="action44_1kHz_WAV">
+   <property name="text">
+    <string>44.1kHz WAV</string>
    </property>
   </action>
  </widget>
