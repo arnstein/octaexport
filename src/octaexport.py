@@ -22,6 +22,7 @@ class MainWindow(QMainWindow, Ui_OctaExportUi):
         self.files_to_convert = []
         self.directory_focus = ""
         self.target_list_focus = ""
+        self.mode = "octa"
 
         self.path = QDir.rootPath()
 
@@ -45,6 +46,8 @@ class MainWindow(QMainWindow, Ui_OctaExportUi):
         self.pushButton_2.clicked.connect(self.add_file)
         self.pushButton_3.clicked.connect(self.remove_file)
         self.actionExit.triggered.connect(self.on_clicked_exit)
+        self.action44_1kHz_WAV.triggered.connect(self.on_clicked_octa)
+        self.actionFLAC_to_MP3.triggered.connect(self.on_clicked_flac)
 
 
     def add_file(self):
@@ -65,6 +68,12 @@ class MainWindow(QMainWindow, Ui_OctaExportUi):
 
     def on_clicked_exit(self):
         os.sys.exit()
+
+    def on_clicked_octa(self):
+        self.mode = "octa"
+
+    def on_clicked_flac(self):
+        self.mode = "flac"
 
     def on_clicked(self, index):
         self.path = self.directoryModel.fileInfo(index).absoluteFilePath()
@@ -98,15 +107,27 @@ class MainWindow(QMainWindow, Ui_OctaExportUi):
     def convert(self, source_path, destination_path):
         file_name = source_path.name
         output_file = Path.joinpath(destination_path, file_name)
-        if ".wav" in str(file_name):
-            print(f"Converting {file_name}")
-            subprocess.call([
-                'ffmpeg',
-                '-i', source_path,
-                '-acodec', 'pcm_s16le',
-                '-ar', '44100',
-                output_file
-            ])
+        match self.mode:
+            case "octa":
+                if ".wav" in str(file_name):
+                    print(f"Converting {file_name}")
+                    subprocess.call([
+                        'ffmpeg',
+                        '-i', source_path,
+                        '-acodec', 'pcm_s16le',
+                        '-ar', '44100',
+                        output_file
+                    ])
+            case "flac":
+                if ".flac" in str(file_name):
+                    print(f"Converting {file_name}")
+                    subprocess.call([
+                        'ffmpeg',
+                        '-i', source_path,
+                        '-ab', '320k',
+                        '-map_metadata', '0',
+                        output_file.replace("flac", "mp3")
+                    ])
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
