@@ -1,6 +1,7 @@
 import sys
 import os
-import subprocess
+import time
+from subprocess import Popen, PIPE, STDOUT
 from pathlib import Path
 from PyQt6.QtWidgets import QMainWindow, QApplication, QTreeView, QWidget, QVBoxLayout
 from PyQt6.QtGui import QIcon, QFileSystemModel, QStandardItemModel, QStandardItem
@@ -8,8 +9,8 @@ from PyQt6.QtCore import QDir, QStringListModel
 from OctaExportUI import Ui_OctaExportUi
 # TODO:
 # Fix removing items from bottom list
-# Set ffmpeg command in Options
-# Make sure it works on Windows / convert
+# Popup window when conversion is done
+# Pyinstaller package with ffmpeg
 
 class MainWindow(QMainWindow, Ui_OctaExportUi):
     def __init__(self, *args, obj=None, **kwargs):
@@ -89,6 +90,8 @@ class MainWindow(QMainWindow, Ui_OctaExportUi):
 
     def convert_all(self):
         for item in self.files_to_convert:
+            print(f"Iterating {item}", item)
+            print(self.files_to_convert)
             if os.path.isdir(item):
                 folder = Path(item)
                 destination_folder = Path(self.destination)
@@ -103,33 +106,38 @@ class MainWindow(QMainWindow, Ui_OctaExportUi):
                 source = Path(item)
                 self.convert(source, destination)
 
-            self.files_to_convert.remove(item)
+        self.files_to_convert = []
+        print("Conversion done!")
+
 
     def convert(self, source_path, destination_path):
         file_name = source_path.name
         output_file = Path.joinpath(destination_path, file_name)
+        p = ""
         match self.mode:
             case "octa":
                 if ".wav" in str(file_name):
                     print(f"Converting {file_name}")
-                    subprocess.call([
+                    p = Popen([
                         'ffmpeg',
                         '-i', source_path,
                         '-acodec', 'pcm_s16le',
                         '-ar', '44100',
                         output_file
-                    ])
+                    ], stdout=PIPE, stdin=PIPE, stderr=PIPE)
             case "flac":
                 if ".flac" in str(file_name):
                     print(f"Converting {file_name}")
-                    subprocess.call([
+                    p = Popen([
                         'ffmpeg',
                         '-i', source_path,
                         '-ab', '320k',
                         '-map_metadata', '0',
                         str(output_file).replace("flac", "mp3")
-                    ])
+                    ], stdout=PIPE, stdin=PIPE, stderr=PIPE)
 
+        return
+        
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     window = MainWindow()
