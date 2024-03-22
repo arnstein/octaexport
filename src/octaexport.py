@@ -47,7 +47,7 @@ class MainWindow(QMainWindow, Ui_OctaExportUi):
         self.pushButton_3.clicked.connect(self.remove_file)
         self.actionExit.triggered.connect(self.on_clicked_exit)
         self.action44_1kHz_WAV.triggered.connect(self.on_clicked_octa)
-        self.actionFLAC_to_MP3.triggered.connect(self.on_clicked_flac)
+        self.actionFLAC_to_MP3_2.triggered.connect(self.on_clicked_flac)
 
 
     def add_file(self):
@@ -100,7 +100,8 @@ class MainWindow(QMainWindow, Ui_OctaExportUi):
                     self.convert(file, destination)
             else:
                 destination = Path(self.destination)
-                self.convert(item, destination)
+                source = Path(item)
+                self.convert(source, destination)
 
             self.files_to_convert.remove(item)
 
@@ -126,7 +127,7 @@ class MainWindow(QMainWindow, Ui_OctaExportUi):
                         '-i', source_path,
                         '-ab', '320k',
                         '-map_metadata', '0',
-                        output_file.replace("flac", "mp3")
+                        str(output_file).replace("flac", "mp3")
                     ])
 
 if __name__ == '__main__':
